@@ -11,6 +11,8 @@ import { defu } from 'defu'
 export const CONFIG_KEY = 'typo3Cookiebot'
 
 export interface ModuleOptions {
+    // Cookiebot ID
+    // https://support.cookiebot.com/hc/en-us/articles/4405643234194-Your-CBID-or-Domain-group-ID-and-where-to-find-it
     cbid: string
 }
 
