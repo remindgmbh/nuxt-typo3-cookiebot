@@ -1,0 +1,52 @@
+{
+    "name": "@remindgmbh/nuxt-typo3-cookiebot",
+    "version": "0.0.0-development",
+    "author": "David Mellen <d.mellen@remind.de>",
+    "license": "BSD-3-Clause",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/remindgmbh/nuxt-typo3-cookiebot.git"
+    },
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/types.d.ts",
+            "import": "./dist/module.mjs",
+            "require": "./dist/module.cjs"
+        }
+    },
+    "main": "./dist/module.cjs",
+    "types": "./dist/types.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "dev": "npm run dev:prepare && nuxi dev playground",
+        "dev:build": "nuxi build playground",
+        "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+        "lint": "npm run lint:script",
+        "lint:script": "eslint .",
+        "prepack": "npm run dev:prepare && nuxt-module-build build",
+        "static-analysis": "npm run dev:prepare && npm run typecheck && npm run lint",
+        "typecheck": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
+    },
+    "dependencies": {
+        "@nuxt/kit": "^3.11.2"
+    },
+    "devDependencies": {
+        "@nuxt/devtools": "^1.2.0",
+        "@nuxt/module-builder": "^0.6.0",
+        "@nuxt/schema": "^3.11.2",
+        "@remindgmbh/eslint-config-nuxt": "^0.0.0-development-1715775309-012bdf12a3024577a88c5a51518bc6014341ecf5",
+        "@remindgmbh/nuxt-typo3": "^0.0.0-development-1715842993-70095ab175a934b7d6c0422a8c2075543d3d48ec",
+        "@types/node": "^20.12.11",
+        "eslint": "^9.2.0",
+        "nuxt": "^3.11.2",
+        "prettier": "^3.2.5",
+        "typescript": "^5.4.5",
+        "vue-tsc": "^2.0.16"
+    },
+    "peerDependencies": {
+        "@remindgmbh/nuxt-typo3": "^4.1.0 || ^0.0.0-development"
+    }
+}
