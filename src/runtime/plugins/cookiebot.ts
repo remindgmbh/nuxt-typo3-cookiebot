@@ -23,8 +23,8 @@ export default defineNuxtPlugin((nuxt) => {
 
     const config = useRuntimeConfig().public.typo3Cookiebot
 
-    if (!config.uid) {
-        logger.warn('Cookiebot disabled: Cookiebot UID not configured')
+    if (!config.cbid) {
+        logger.warn('Cookiebot disabled: Cookiebot ID not configured')
         return
     }
 
@@ -50,7 +50,7 @@ export default defineNuxtPlugin((nuxt) => {
     useHead({
         script: [
             {
-                'data-cbid': config.uid,
+                'data-cbid': config.cbid,
                 id: 'Cookiebot',
                 src: 'https://consent.cookiebot.com/uc.js',
                 type: 'text/javascript',

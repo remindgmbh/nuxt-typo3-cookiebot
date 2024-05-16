@@ -11,12 +11,12 @@ import { defu } from 'defu'
 export const CONFIG_KEY = 'typo3Cookiebot'
 
 export interface ModuleOptions {
-    uid: string
+    cbid: string
 }
 
 export default defineNuxtModule<ModuleOptions>({
     defaults: {
-        uid: '',
+        cbid: '',
     },
     meta: {
         configKey: CONFIG_KEY,
