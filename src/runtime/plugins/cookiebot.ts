@@ -53,7 +53,6 @@ export default defineNuxtPlugin((nuxt) => {
                 'data-cbid': config.cbid,
                 id: 'Cookiebot',
                 src: 'https://consent.cookiebot.com/uc.js',
-                type: 'text/javascript',
             },
         ],
     })
