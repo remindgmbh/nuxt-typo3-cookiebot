@@ -28,7 +28,7 @@ export default defineNuxtModule<ModuleOptions>({
     setup(options, nuxt) {
         const resolver = createResolver(import.meta.url)
 
-        nuxt.options.alias['#nuxt-typo3-cookiebot'] =
+        nuxt.options.alias['@remindgmbh/nuxt-typo3-cookiebot'] =
             resolver.resolve('runtime')
 
         nuxt.options.runtimeConfig.public[CONFIG_KEY] = defu(
