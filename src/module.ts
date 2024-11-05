@@ -25,7 +25,7 @@ export default defineNuxtModule<ModuleOptions>({
         name,
         version,
     },
-    setup(options, nuxt) {
+    async setup(options, nuxt) {
         const resolver = createResolver(import.meta.url)
 
         nuxt.options.alias['@remindgmbh/nuxt-typo3-cookiebot'] =
@@ -43,7 +43,7 @@ export default defineNuxtModule<ModuleOptions>({
         })
 
         if (!hasNuxtModule('@remindgmbh/nuxt-typo3')) {
-            installModule('@remindgmbh/nuxt-typo3')
+            await installModule('@remindgmbh/nuxt-typo3')
         }
 
         addPlugin({
