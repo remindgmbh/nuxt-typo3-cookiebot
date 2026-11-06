@@ -7,6 +7,7 @@ import {
     useT3CookieConsent,
 } from '#imports'
 import type { Cookiebot } from '../types/cookiebot'
+import type {} from '@remindgmbh/nuxt-typo3/types/hooks'
 
 interface CookieConsent {
     stamp: string
