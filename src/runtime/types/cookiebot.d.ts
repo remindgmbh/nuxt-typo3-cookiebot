@@ -1,4 +1,4 @@
-interface Cookiebot {
+export interface Cookiebot {
     consent: {
         marketing: boolean
         necessary: boolean

@@ -1,10 +1,4 @@
-import {
-    addPlugin,
-    createResolver,
-    defineNuxtModule,
-    hasNuxtModule,
-    installModule,
-} from '@nuxt/kit'
+import { addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit'
 import { name, version } from '../package.json'
 import { defu } from 'defu'
 
@@ -41,10 +35,6 @@ export default defineNuxtModule<ModuleOptions>({
                 path: resolver.resolve('runtime/types/schema.d.ts'),
             })
         })
-
-        if (!hasNuxtModule('@remindgmbh/nuxt-typo3')) {
-            await installModule('@remindgmbh/nuxt-typo3')
-        }
 
         addPlugin({
             src: resolver.resolve('./runtime/plugins/cookiebot'),

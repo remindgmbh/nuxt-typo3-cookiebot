@@ -6,6 +6,7 @@ import {
     useRuntimeConfig,
     useT3CookieConsent,
 } from '#imports'
+import type { Cookiebot } from '../types/cookiebot'
 
 interface CookieConsent {
     stamp: string
@@ -37,15 +38,27 @@ export default defineNuxtPlugin((nuxt) => {
         window.addEventListener('CookiebotOnDecline', setCookieCategories)
     })
 
-    nuxt.hook('typo3:cookieConsent:acceptCookies', (category) =>
-        window.Cookiebot?.submitCustomConsent(
-            category === 'preferences' || window.Cookiebot.consent.preferences,
-            category === 'statistics' || window.Cookiebot.consent.statistics,
-            category === 'marketing' || window.Cookiebot.consent.marketing,
-        ),
-    )
+    nuxt.hook('typo3:cookieConsent:acceptCookies', (category) => {
+        if (!import.meta.client || !window.Cookiebot) {
+            return
+        }
 
-    nuxt.hook('typo3:cookieConsent:showBanner', () => window.Cookiebot?.renew())
+        const cookiebot = window.Cookiebot as Cookiebot
+        cookiebot.submitCustomConsent(
+            category === 'preferences' ||
+                (cookiebot.consent.preferences ?? false),
+            category === 'statistics' ||
+                (cookiebot.consent.statistics ?? false),
+            category === 'marketing' || (cookiebot.consent.marketing ?? false),
+        )
+    })
+
+    nuxt.hook('typo3:cookieConsent:showBanner', () => {
+        if (import.meta.client && window.Cookiebot) {
+            const cookiebot = window.Cookiebot as Cookiebot
+            cookiebot.renew()
+        }
+    })
 
     useHead({
         script: [
@@ -63,9 +76,9 @@ export default defineNuxtPlugin((nuxt) => {
             decode: (value) =>
                 // use regex from https://www.cookiebot.com/en/developer/ (Server side usage - PHP)
                 JSON.parse(
-                    decodeURIComponent(value)
+                    decodeURIComponent(value ?? '')
                         .replaceAll("'", '"')
-                        .replaceAll(/([{[,])\s*([a-zA-Z0-9_]+?):/g, '$1"$2":'),
+                        .replaceAll(/([{[,])\s*(\w+):/g, '$1"$2":'),
                 ),
         })
 

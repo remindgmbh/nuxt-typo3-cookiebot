@@ -31,21 +31,24 @@
         "typecheck": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
     },
     "dependencies": {
-        "@nuxt/kit": "^3.11.2",
-        "defu": "^6.1.4"
+        "@nuxt/kit": "^4.6.0",
+        "defu": "^6.1.0"
     },
     "devDependencies": {
-        "@nuxt/devtools": "^1.2.0",
-        "@nuxt/module-builder": "^0.6.0",
-        "@nuxt/schema": "^3.11.2",
-        "@remindgmbh/eslint-config-nuxt": "^0.0.0-development-1715775309-012bdf12a3024577a88c5a51518bc6014341ecf5",
-        "@remindgmbh/nuxt-typo3": "^0.0.0-development-1715842993-70095ab175a934b7d6c0422a8c2075543d3d48ec",
-        "@types/node": "^20.12.11",
-        "eslint": "^9.2.0",
-        "nuxt": "^3.11.2",
-        "prettier": "^3.2.5",
-        "typescript": "^5.4.5",
-        "vue-tsc": "^2.0.16"
+        "@nuxt/devtools": "^4.1.0",
+        "@nuxt/module-builder": "^1.0.3",
+        "@nuxt/schema": "^4.6.0",
+        "@remindgmbh/eslint-config-nuxt": "^2.2.0",
+        "@remindgmbh/nuxt-typo3": "^6.1.0",
+        "@types/node": "^24.0.0",
+        "eslint": "^10.14.0",
+        "nuxt": "^4.6.0",
+        "prettier": "^3.9.0",
+        "typescript": "^6.0.3",
+        "vue-tsc": "^3.3.0"
+    },
+    "overrides": {
+        "typescript": "^6.0.3"
     },
     "peerDependencies": {
         "@remindgmbh/nuxt-typo3": "^6.0.0 || ^5.0.0 || ^4.1.0 || ^0.0.0-development"
